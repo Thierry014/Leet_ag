@@ -14,3 +14,6 @@ def between_markers(text: str, begin: str, end: str) -> str:
 
 
 print(between_markers("No [b]hi","[b]","[/b]"))
+
+
+#! string.find() 找不到会返回-1  这里的-1 并不 = False
