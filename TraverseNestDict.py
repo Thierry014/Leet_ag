@@ -1,3 +1,4 @@
+#  must use recusive method to handle those type of problem 
 dic = {'name':{'first':'Thierry', 'last':'Henry'},
        'age':6,
        'gender':'male',
@@ -6,22 +7,12 @@ dic = {'name':{'first':'Thierry', 'last':'Henry'},
         
         
 }
-# dic = {"key": {"deeper": {"more": {"enough": "value"}}}}
 
-
-
-def myprint(d, label = ''):
-    
+def myprint(d):
     for k, v in d.items():
         if isinstance(v, dict):
-            label += (f'{k}/')
-            myprint(v,label)
-
+            myprint(v)
         else:
-            print(f'{label}{k}:{v}')
-            label = ''
+            print("{0} : {1}".format(k, v))
 
-
-    
-        
 myprint(dic)
