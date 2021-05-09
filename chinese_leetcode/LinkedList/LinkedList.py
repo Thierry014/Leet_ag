@@ -63,6 +63,52 @@ class LinkedList:
             return 
 
         prev.next = head.next 
+
+    def remove_from_last(self,n):
+
+        dummy = Node(0,head)
+# 1. use stack 
+        stack = list()
+
+# push all node into stack 
+        cur = dummy 
+        while cur:
+            stack.append(cur)
+            cur = cur.next
+        
+        for i in range(n):
+            stack.pop()
+        prev = stack[-1]
+        prev.next = prev.next.next
+# 2. two pointer [0,1,2,3,4,5,6] => remove 5=> (first => 6), (sen => 4) 
+# when first come to end, the second is the prev node of remove node
+        first = head
+        second = dummy 
+        for i in range(n):
+            first = first.next
+        
+        while first:
+            first = first.next
+            second = second.next 
+        
+        second.next = second.next.next
+
+# return the head node (required)
+        return dummy.next
+
+    def reverseList(self):
+        prev = None
+        cur = self.head 
+
+        while cur:
+            temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp
+
+# need to set the haed 
+        self.head = prev
+        
     
 
 
@@ -75,14 +121,17 @@ ll.head.next = e2
 e2.next = e3
 
 # insert
-ll.insertFromHead('head') 
+ll.insertFromHead('heads') 
 ll.insertFromTail('tail')
 ll.insertAfter(e2,'after5')
 
 head = ll.head
 
 # remove
-ll.remove(5)
+# ll.remove(5)
+# ll.remove_from_last(2)
+
+# reverse 
+ll.reverseList()
 
 ll.listprint()
-
